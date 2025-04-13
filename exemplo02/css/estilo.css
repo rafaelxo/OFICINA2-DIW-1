@@ -1,0 +1,93 @@
+/* Reset básico */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border: 3px solid red;
+}
+
+#id-barra-de-titulo{
+    border: 3px solid #07f232;
+}
+
+#id-conteudo-principal {
+    border: 3px solid #07f232;
+}
+
+#id-menu-lateral {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #07f232;
+}
+
+#id-rodape {
+    border: 3px solid #07f232;
+}
+
+/* Diagramação principal */
+.classe-container {
+    display: flex;
+    flex: 1; /* É o mesmo que flex-grow: 1;*/
+    border: 3px solid red;
+}
+
+/* Barra de título */
+.classe-barra-de-titulo {
+    background-color: #007BFF;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    border: 3px solid yellow;
+}
+
+/* Menu lateral */
+.classe-menu-lateral {
+    flex-grow: 1;
+    background-color: #f4f4f4;
+    width: 5rem;
+    padding: 1rem;
+    border: 3px solid purple;
+}
+
+.classe-menu-lateral ul {
+    list-style: none;
+}
+
+.classe-menu-lateral li {
+    margin: 1rem 0;
+}
+
+.classe-menu-lateral a {
+    text-decoration: none;
+    color: #333;
+}
+
+.classe-menu-lateral a:hover {
+    text-decoration: underline;
+    color: #007BFF;
+}
+
+/* Conteúdo principal */
+.classe-conteudo-principal {
+    flex-grow: 1;
+    padding: 1rem;
+    border: 3px solid green;
+}
+
+/* Rodapé */
+.classe-rodape {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    border: 3px solid pink;
+}

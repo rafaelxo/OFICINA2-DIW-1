@@ -11,7 +11,7 @@ function processar() {
 }
 
 // Tornar a função processar() acessível globalmente:
-window.executar = processar;
+//window.executar = processar;
 
 // A linha acima também pode ser substituída pela linha abaixo:
 // Adiciona o evento de clique ao botão:

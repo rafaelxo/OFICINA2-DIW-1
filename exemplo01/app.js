@@ -11,8 +11,11 @@ function processar() {
 }
 
 // Tornar a função processar() acessível globalmente:
-//window.executar = processar;
+window.executar = processar;
 
-// A linha acima também pode ser substituída pela linha abaixo:
+/*
+ * A linha acima também pode ser substituída pela linha abaixo:
+ * OBS: neste caso, remover o evento onclick="executar()" do botão.
+ */
 // Adiciona o evento de clique ao botão:
-document.getElementById('botao-executar').addEventListener('click', processar);
+//document.getElementById('botao-executar').addEventListener('click', processar);

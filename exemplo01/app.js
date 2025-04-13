@@ -7,5 +7,12 @@ function processar() {
      PI = ${pi}
    `;
 
-   document.writeln(resposta);
+   document.getElementById("resp").innerHTML = resposta;
 }
+
+// Tornar a função processar() acessível globalmente:
+window.executar = processar;
+
+// A linha acima também pode ser substituída pela linha abaixo:
+// Adiciona o evento de clique ao botão:
+document.getElementById('botao-executar').addEventListener('click', processar);

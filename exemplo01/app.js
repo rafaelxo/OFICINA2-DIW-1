@@ -1,4 +1,4 @@
-import { pi, somar, multiplicar } from "./biblioteca";
+import { pi, somar, multiplicar } from "./biblioteca.js";
 
 function processar() {
     var resposta = `

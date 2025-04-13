@@ -1,13 +1,13 @@
 import { pi, somar, multiplicar } from "./biblioteca.js";
 
-function processar() {
+export function processar() {
     var resposta = `
+     PI = ${pi} <br/>
      3 + 5 = ${somar(3, 5)} <br/>
      4 * 3 = ${multiplicar(4, 3)} <br/>
-     PI = ${pi}
    `;
 
-   document.getElementById("resp").innerHTML = resposta;
+    document.getElementById("resp").innerHTML = resposta;
 }
 
 // Tornar a função processar() acessível globalmente:

@@ -1,16 +1,6 @@
-// Exportando uma constante:
-export const pi = 3.14159; 
+import { pi, somar, multiplicar } from "./biblioteca";
 
-// Exportando funcionalidades:
-export function somar(a, b) {
-    return a + b;
-}
-
-export function multiplicar(a, b) {
-    return a * b;
-}
-
-export function processar() {
+function processar() {
     var resposta = `
      3 + 5 = ${somar(3, 5)} <br/>
      4 * 3 = ${multiplicar(4, 3)} <br/>
@@ -19,4 +9,3 @@ export function processar() {
 
    document.writeln(resposta);
 }
-

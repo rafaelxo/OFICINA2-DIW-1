@@ -28,5 +28,5 @@ export function gerarBarraDeTitulo() {
   `;
 }
 
-// Inicializa o componente
+// Iniciar o componente:
 gerarBarraDeTitulo();

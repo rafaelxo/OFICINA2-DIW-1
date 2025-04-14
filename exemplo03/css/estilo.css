@@ -54,32 +54,6 @@ body {
     border: 3px solid orange;
 }
 
-/* Menu lateral */
-.classe-menu-lateral {
-    flex-grow: 1;
-    background-color: #f4f4f4;
-    width: 5rem;
-    padding: 1rem;
-    border: 3px solid orange;
-}
-
-.classe-menu-lateral ul {
-    list-style: none; /* Remove os marcadores padrão das listas. */
-}
-
-.classe-menu-lateral li {
-    margin: 1rem 0;
-}
-
-.classe-menu-lateral a {
-    text-decoration: none; /* Remove o sublinhado dos links. */
-    color: #333;
-}
-
-.classe-menu-lateral a:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao link quando o cursor está sobre ele. */
-    color: #007BFF;
-}
 
 /* Conteúdo principal */
 .classe-conteudo-principal {

@@ -7,7 +7,8 @@ function adicionarEstilos() {
     .classe-conteudo-principal {
         flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante disponível dentro do flexbox. */
         padding: 1rem;
-        border: 3px solid orange;
+        min-height: 88%;
+        border: 10px solid orange;
     }
   `;
 

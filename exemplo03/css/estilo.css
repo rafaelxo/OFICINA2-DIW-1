@@ -55,12 +55,6 @@ body {
 }
 
 
-/* Conteúdo principal */
-.classe-conteudo-principal {
-    flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante disponível dentro do flexbox. */
-    padding: 1rem;
-    border: 3px solid orange;
-}
 
 /* Rodapé */
 .classe-rodape {

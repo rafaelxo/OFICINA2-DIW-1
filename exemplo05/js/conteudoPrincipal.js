@@ -1,25 +1,20 @@
-// Adicionar estilos diretamente no módulo:
-function adicionarEstilos() {
-  const estilo = document.createElement('style');
+// Importa a função utilitária:
+import { adicionarAoElementoStyle } from './elementoStyle.js'; 
 
-  estilo.textContent = `
-    /* Conteúdo principal */
-    .classe-conteudo-principal {
-        flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante disponível dentro do flexbox. */
-        padding: 1rem;
-        min-height: 88%;
-        background-color: yellow;
-        border: 10px solid orange;
-    }
-  `;
-
-  document.head.appendChild(estilo);
-}
+// Adiciona os estilos da barra de título ao elemento <style>:
+adicionarAoElementoStyle(`
+  /* Conteúdo principal */
+  .classe-conteudo-principal {
+    flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante disponível dentro do flexbox. */
+    padding: 1rem;
+    min-height: 88%;
+    background-color: yellow;
+    border: 10px solid orange;
+  }
+`);
 
 // Componente do conteúdo principal:
 export function gerarConteudoPrincipal() {
-  adicionarEstilos();
-
   const conteudoPrincipal = document.getElementById('id-conteudo-principal');
 
   conteudoPrincipal.innerHTML = `

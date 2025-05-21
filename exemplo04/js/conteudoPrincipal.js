@@ -8,6 +8,7 @@ function adicionarEstilos() {
         flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante disponível dentro do flexbox. */
         padding: 1rem;
         min-height: 88%;
+        background-color: yellow;
         border: 10px solid orange;
     }
   `;

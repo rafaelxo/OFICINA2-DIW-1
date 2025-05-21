@@ -1,0 +1,69 @@
+/*
+ * Configuração de elementos HTML.
+ */
+
+ /* Reset básico */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Faz com que largura e altura incluam bordas e padding no cálculo. */
+}
+/*
+box-sizing: content-box;
+  Especifica que apenas o conteúdo deve ser considerado
+  na largura e na altura total do elemento:
+  content width + padding + border => largura real do elemento
+  content height + padding + border => altura real do elemento 
+  Ou seja: o elemento fica maior do que especificado 
+           na largura e na altura.
+
+box-sizing: border-box;
+  Especifica que o conteúdo, o padding e a borda devem ser 
+  considerados na largura e na altura total do elemento.
+*/
+
+body {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6; /* Define o espaçamento entre linhas para melhorar a legibilidade. */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* vh: viewport height (altura da janela de visualização). */
+    border: 3px solid red;
+}
+
+/*
+ * Configuração de identificadores (IDs).
+ */
+ #id-barra-de-titulo{
+    border: 3px solid #07f232;
+}
+
+#id-conteudo-principal {
+    border: 3px solid #07f232;
+    flex: 1;
+}
+
+#id-menu-lateral {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #07f232;
+}
+
+#id-rodape {
+    border: 3px solid #07f232;
+}
+
+/*
+ * Configuração de classe.
+ */
+
+/* Diagramação principal */
+.classe-container {
+    display: flex;
+    flex: 1; /* É o mesmo que flex-grow: 1;*/
+    border: 3px solid orange;
+}
+
+
+

@@ -5,7 +5,7 @@ function adicionarEstilos() {
   estilo.innerHTML = `
     /* Menu lateral */
     .classe-menu-lateral {
-      flex-grow: 1;
+      flex-grow: 1; /* Faz com que o menu lateral ocupe toda a altura disponível dentro do flexbox. */
       background-color: #f4f4f4;
       width: 5rem;
       padding: 1rem;

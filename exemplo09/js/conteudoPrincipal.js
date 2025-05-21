@@ -1,20 +1,11 @@
-// Importa a função utilitária:
-import { adicionarAoElementoStyle } from './elementoStyle.js'; 
+// Função para carregar a folha de estilo CSS:
+import { importarFolhaDeEstilo } from './importarFolhaDeEstilo.js'; 
+
+// Importa os estilos do arquivo externo
+importarFolhaDeEstilo('./css/conteudoPrincipal.css');
 
 // Componente do conteúdo principal:
 export function gerarConteudoPrincipal() {
-// Adiciona os estilos da barra de título ao elemento <style>:
-adicionarAoElementoStyle(`
-    /* Conteúdo principal */
-    .classe-conteudo-principal {
-      flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante disponível dentro do flexbox. */
-      padding: 1rem;
-      min-height: 88%;
-      background-color: yellow;
-      border: 10px solid orange;
-    }
-  `);
-  
   const conteudoPrincipal = document.getElementById('id-conteudo-principal');
 
   conteudoPrincipal.innerHTML = `

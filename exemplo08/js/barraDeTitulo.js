@@ -1,13 +1,22 @@
-// Função para carregar a folha de estilo CSS:
-import { importarFolhaDeEstilo } from './importarFolhaDeEstilo.js'; 
-
-// Importa os estilos do arquivo externo
-importarFolhaDeEstilo('./css/barraDeTitulo.css');
+// Importa a função utilitária:
+import { adicionarAoElementoStyle } from './elementoStyle.js';
 
 // Componente da barra de título:
 export function gerarBarraDeTitulo() {
-  const barraDeTitulo = document.getElementById('id-barra-de-titulo');
+  // Adiciona os estilos da barra de título ao elemento <style>:
+  adicionarAoElementoStyle(`
+    /* Barra de título */
+    .classe-barra-de-titulo {
+      background-color: #007BFF;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      border: 3px solid orange;
+    }
+  `);
   
+  const barraDeTitulo = document.getElementById('id-barra-de-titulo');
+
   barraDeTitulo.innerHTML = `
     <header class="classe-barra-de-titulo">
       <h1>Minha Página Modular</h1>

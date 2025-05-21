@@ -8,6 +8,19 @@ body, h1, h2, p, ul, li {
     padding: 0;
     box-sizing: border-box; /* Faz com que largura e altura incluam bordas e padding no cálculo. */
 }
+/*
+box-sizing: content-box;
+  Especifica que apenas o conteúdo deve ser considerado
+  na largura e na altura total do elemento:
+  content width + padding + border => largura real do elemento
+  content height + padding + border => altura real do elemento 
+  Ou seja: o elemento fica maior do que especificado 
+           na largura e na altura.
+
+box-sizing: border-box;
+  Especifica que o conteúdo, o padding e a borda devem ser 
+  considerados na largura e na altura total do elemento.
+*/
 
 body {
     font-size: 16px;
@@ -15,7 +28,7 @@ body {
     line-height: 1.6; /* Define o espaçamento entre linhas para melhorar a legibilidade. */
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* vh: viewport height (altura da janela de visualização). */
     border: 3px solid red;
 }
 
@@ -63,7 +76,7 @@ body {
 
 /* Menu lateral */
 .classe-menu-lateral {
-    flex-grow: 1;
+    flex-grow: 1; /* Faz com que o menu lateral ocupe toda a altura disponível dentro do flexbox. */
     background-color: #f4f4f4;
     width: 5rem;
     padding: 1rem;
@@ -93,6 +106,7 @@ body {
     flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante disponível dentro do flexbox. */
     padding: 1rem;
     min-height: 88%;
+    background-color: yellow;
     border: 10px solid orange;
 }
 

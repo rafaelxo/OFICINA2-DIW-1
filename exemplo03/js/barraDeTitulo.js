@@ -4,7 +4,7 @@ export function gerarBarraDeTitulo() {
   
   barraDeTitulo.innerHTML = `
     <header class="classe-barra-de-titulo">
-      <h1>Minha Página Modular: Exemplo 02</h1>
+      <h1>Minha Página Modular</h1>
     </header>
   `;
 }

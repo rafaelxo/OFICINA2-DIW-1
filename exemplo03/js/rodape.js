@@ -1,25 +1,5 @@
-// Adicionar estilos diretamente no módulo:
-function adicionarEstilos() {
-  const estilo = document.createElement('style');
-  
-  estilo.textContent = `
-    /* Rodapé */
-    .classe-rodape {
-        background-color: #333;
-        color: #c9c9c9;
-        text-align: center;
-        padding: 1rem 0;
-        border: 3px solid orange;
-    }
-  `;
-  
-  document.head.appendChild(estilo);
-}
-
-// Componente do rodapé:
+// Componente do rodapé
 export function gerarRodape() {
-    adicionarEstilos();
-
     const rodape = document.getElementById('id-rodape');
 
     rodape.innerHTML = `
@@ -29,5 +9,5 @@ export function gerarRodape() {
     `;
 }
 
-// Iniciar o componente:
+// Inicializa o componente
 gerarRodape();

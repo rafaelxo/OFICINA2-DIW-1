@@ -1,21 +1,6 @@
-import { pi, somar, multiplicar } from "./biblioteca.js";
+// Importando as funcionalidades e constante do arquivo biblioteca.js
+import { somar, multiplicar, pi } from './biblioteca.js';
 
-export function processar(x, y) {
-    var resposta = `
-     PI = ${pi} <br/>
-     ${x} + ${y} = ${somar(x, y)} <br/>
-     ${x} * ${y} = ${multiplicar(x, y)} <br/>
-   `;
-
-    document.getElementById("resp").innerHTML = resposta;
-}
-
-// Tornar a função processar() acessível globalmente:
-window.executar = processar;
-
-/*
- * A linha acima também pode ser substituída pela linha abaixo:
- * OBS: neste caso, remover o evento onclick="executar()" do botão.
- */
-// Adiciona o evento de clique ao botão:
-//document.getElementById('botao-executar').addEventListener('click', processar);
+console.log('A soma de 3 e 4 é: ', somar(3, 4)); // Resultado: 7
+console.log('A multiplicação de 3 e 4 é: ', multiplicar(3, 4)); // Resultado: 12
+console.log('O valor de pi é: ', pi); // Resultado: 3.14159

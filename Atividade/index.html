@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <aside id="sidebar"></aside>
+    <main class="main">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Hello Paulo 👋🏼</h1>
+            <div class="searchBox">
+                <input type="text" placeholder="Search" /> 🔍
+            </div>
+        </div>
+
+        <!-- KPI ROW -->
+        <section class="kpis" id="kpiRow"></section>
+
+        <!-- DASHBOARD TITLE -->
+        <h2>Dashboard</h2>
+
+        <!-- DASHBOARD CHARTS GRID -->
+        <section class="dashboard-grid">
+            <!-- time distribution donut -->
+            <div class="chart-card">
+                <h3>Divisão de tempo</h3>
+                <div class="chart-wrapper">
+                    <canvas id="donutTime"></canvas>
+                </div>
+            </div>
+
+            <!-- KPI gauge -->
+            <div class="chart-card">
+                <h3>Meta – KPI</h3>
+                <div class="chart-wrapper">
+                    <canvas id="gaugeKpi"></canvas>
+                </div>
+            </div>
+
+            <!-- monthly comparison line chart -->
+            <div class="chart-card chart-lg">
+                <h3>Tempo Gasto</h3>
+                <div class="chart-wrapper" style="height:280px;">
+                    <canvas id="lineMonthly"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        /************  DATA SOURCE (JSON)  ************/
+        const data = {
+            "graficos": {
+                "workHoursSummary": {
+                    "total_hours_month": 5423,
+                    "change_percent": 10,
+                    "weekly_hours": 44,
+                    "weekly_avg_diff": -1,
+                    "today_hours": 4
+                },
+                "timeDistribution": [
+                    { "category": "Reuniões", "percent": 25 },
+                    { "category": "Dev", "percent": 40 },
+                    { "category": "Bugfix", "percent": 20 },
+                    { "category": "Outros", "percent": 15 }
+                ],
+                "KPI": {
+                    "target_hours": 5000,
+                    "current_hours": 5423
+                },
+                "monthlyComparison": {
+                    "months": ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT"],
+                    "current_year": [80, 70, 90, 100, 85, 95, 110, 120, 105, 98],
+                    "previous_year": [75, 65, 85, 105, 80, 90, 100, 115, 100, 95]
+                }
+            }
+        };
+
+        /************  KPI CARDS  ************/
+        function renderKPIs() {
+            const { total_hours_month, change_percent, weekly_hours, weekly_avg_diff, today_hours } = data.graficos.workHoursSummary;
+            const kpiRow = document.getElementById('kpiRow');
+
+            const kpis = [
+                {
+                    label: 'Total Hours',
+                    value: total_hours_month,
+                    change: change_percent,
+                    icon: '⏱️'
+                },
+                {
+                    label: 'Weekly Hours',
+                    value: weekly_hours,
+                    change: weekly_avg_diff,
+                    icon: '📈'
+                },
+                {
+                    label: 'Today',
+                    value: today_hours,
+                    change: 0,
+                    icon: '🖥️'
+                }
+            ];
+
+            kpiRow.innerHTML = kpis.map(k => {
+                const changeClass = k.change >= 0 ? 'changeUp' : 'changeDown';
+                const changeTxt = k.change === 0 ? '' : `${Math.abs(k.change)}% ${k.change >= 0 ? 'this month' : 'than avg'}`;
+
+                return `
+      <div class="kpi">
+        <div class="icon">${k.icon}</div>
+        <span class="label">${k.label}</span>
+        <span class="value">${k.value}</span>
+        ${changeTxt ? `<span class="${changeClass}">${changeTxt}</span>` : ''}
+      </div>
+    `;
+            }).join('');
+        }
+
+        /************  CHARTS  ************/
+        function renderCharts() {
+            // ---------- Donut (timeDistribution) ----------
+            const ctxDonut = document.getElementById('donutTime');
+            const timeLabels = data.graficos.timeDistribution.map(t => t.category);
+            const timeValues = data.graficos.timeDistribution.map(t => t.percent);
+            new Chart(ctxDonut, {
+                type: 'doughnut',
+                data: {
+                    labels: timeLabels,
+                    datasets: [{
+                        data: timeValues,
+                        backgroundColor: [
+                            '#3b82f6', '#1e40af', '#60a5fa', '#93c5fd'
+                        ],
+                        hoverOffset: 6,
+                        borderRadius: 6,
+                        cutout: '60%'
+                    }]
+                },
+                options: {
+                    plugins: { legend: { position: 'bottom', labels: { color: '#334155' } } },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // ---------- Gauge (KPI) ----------
+            const ctxGauge = document.getElementById('gaugeKpi');
+            const target = data.graficos.KPI.target_hours;
+            const current = data.graficos.KPI.current_hours;
+            const gaugeVal = current > target ? target : current;
+            new Chart(ctxGauge, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Current', 'Remaining'],
+                    datasets: [{
+                        data: [gaugeVal, target - gaugeVal],
+                        backgroundColor: ['#3b82f6', '#e5e7eb'],
+                        borderWidth: 0,
+                        circumference: 180,
+                        rotation: -90,
+                        cutout: '70%'
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: false } },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // ---------- Line (monthly comparison) ----------
+            const ctxLine = document.getElementById('lineMonthly');
+            const months = data.graficos.monthlyComparison.months;
+            new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Qtd ano atual',
+                            data: data.graficos.monthlyComparison.current_year,
+                            tension: 0.35,
+                            fill: false,
+                            borderWidth: 3,
+                            pointRadius: 4,
+                            borderColor: '#ef4444',
+                        },
+                        {
+                            label: 'Qtd ano anterior',
+                            data: data.graficos.monthlyComparison.previous_year,
+                            tension: 0.35,
+                            fill: false,
+                            borderWidth: 3,
+                            pointRadius: 4,
+                            borderColor: '#1e293b',
+                        },
+                    ]
+                },
+                options: {
+                    plugins: { legend: { position: 'top', labels: { color: '#334155' } } },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { color: '#64748b' } },
+                        x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderKPIs();
+            renderCharts();
+        });
+    </script>
+    <script src="./js/navbar.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+/* ===============  DESIGN TOKENS  =============== */
+:root {
+  --accent: #1e40af;          /* azul-escuro */
+  --accent-light: #3b82f6;   /* azul-claro */
+  --bg: #f8fafc;             /* cinza-gelo do fundo */
+  --bg-card: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* :::::::::  MAIN AREA  ::::::::: */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 40px;
+  overflow-y: auto;
+  gap: 32px;
+}
+
+/* ---- header greeting + search */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.searchBox {
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.searchBox input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+/* ---- KPI cards row */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 22px;
+}
+.kpi {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+.kpi .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: var(--accent-light);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.kpi .value { font-size: 24px; font-weight: 700; }
+.kpi .label { font-size: 14px; color: var(--text-muted); }
+.kpi .changeUp { color: #16a34a; font-size: 13px; }
+.kpi .changeDown { color: #dc2626; font-size: 13px; }
+
+/* ---- dashboard charts */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.chart-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+.chart-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+}
+/* ---- line chart bigger */
+.chart-lg {
+  grid-column: 1 / -1;
+}
+
+/* ===== Scrollbar aesthetics ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-light);
+  border-radius: 4px;
+}
